@@ -16,15 +16,15 @@ export module database {
     });
 
     database.once("connected", async () => {
-      try {
-        await mongoose.connection.db.dropDatabase();
-        console.log("Dropped all collections");
-      } catch (error) {
-        console.log(error);
-      }
+      // try {
+      //   await mongoose.connection.db.dropDatabase();
+      //   console.log("Dropped all collections");
+      // } catch (error) {
+      //   console.log(error);
+      // }
       console.log("Database Connected");
 
-      initUsers();
+      // initUsers();
       console.log("Users initialized");
       // initGroups();
       // console.log("Groups initialized");

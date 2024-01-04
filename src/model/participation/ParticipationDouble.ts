@@ -1,17 +1,16 @@
-import { Participation } from '../common';
-import { Double } from '../record/Double';
-import mongoose, { Schema } from 'mongoose';
+import { Participation } from "../common";
+import { Schema, Types } from "mongoose";
 
 export interface ParticipationDouble extends Participation {
-  pairId1: Double;
-  pairId2: Double;
+  pairId1: Types.ObjectId;
+  pairId2: Types.ObjectId;
 }
 
-export interface ParticipationDoubleModel extends ParticipationDouble, Document {};
+export interface ParticipationDoubleModel
+  extends ParticipationDouble,
+    Document {}
 
-const participationDoubleSchema = new mongoose.Schema<ParticipationDouble>({
-  pairId1: { type: Schema.Types.ObjectId, required: true, ref: 'Double' },
-  pairId2: { type: Schema.Types.ObjectId, required: true, ref: 'Double' },
-})
-
-export default mongoose.model<ParticipationDoubleModel>('ParticipationDouble', participationDoubleSchema);
+const participationDoubleSchema = new Schema<ParticipationDouble>({
+  pairId1: { type: Schema.Types.ObjectId, required: true, ref: "Double" },
+  pairId2: { type: Schema.Types.ObjectId, required: true, ref: "Double" },
+});

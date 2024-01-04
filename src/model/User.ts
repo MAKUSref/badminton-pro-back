@@ -1,4 +1,4 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema, Types } from "mongoose";
 import { Double } from "./record/Double";
 import { Single } from "./record/Single";
 import { Gender, Role } from "./common";
@@ -10,14 +10,14 @@ export interface User {
   gender: Gender;
   email: string;
   role: Role[];
-  singleId?: Single;
-  doubleId?: Double;
-  mixId?: Double;
+  singleId?: Types.ObjectId;
+  doubleId?: Types.ObjectId;
+  mixId?: Types.ObjectId;
 }
 
 export interface UserModel extends User, Document {}
 
-const userSchema = new mongoose.Schema<User>({
+const userSchema = new Schema<User>({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   phoneNumber: { type: String, required: true },

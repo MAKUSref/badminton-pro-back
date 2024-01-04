@@ -1,12 +1,12 @@
 export interface Participation {
-  set1: number;
-  set2: number;
-  set3: number;
+  set1: number | null;
+  set2: number | null;
+  set3: number | null;
 }
 
-export interface Game {
-  startDataTime: string;
-  court: string; //Change to Court
+export interface Match {
+  startDataTime?: string;
+  court?: number;
 }
 
 export type Gender = "MAN" | "WOMAN";

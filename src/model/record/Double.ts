@@ -1,16 +1,15 @@
-import mongoose, { Schema } from "mongoose";
-import { User } from "../User";
-import { Group } from "../Group";
+import mongoose, { Schema, Types } from "mongoose";
 
 export interface Double {
-  groupId: Group;
-  playerId1: User;
-  playerId2: User;
+  _id: Types.ObjectId;
+  groupId: Types.ObjectId;
+  playerId1: Types.ObjectId;
+  playerId2: Types.ObjectId;
 }
 
 export interface DoubleModel extends Double, Document {}
 
-const doubleSchema = new mongoose.Schema<Double>({
+const doubleSchema = new Schema<Double>({
   groupId: { type: Schema.Types.ObjectId, required: true, ref: "Group" },
   playerId1: { type: Schema.Types.ObjectId, required: true, ref: "User" },
   playerId2: { type: Schema.Types.ObjectId, required: true, ref: "User" },

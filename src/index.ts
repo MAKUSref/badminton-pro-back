@@ -7,6 +7,7 @@ import usersRoutes from "./routes/User";
 import groupRoutes from "./routes/Group";
 import doubleRoutes from "./routes/record/Double";
 import singleRoutes from "./routes/record/Single";
+import matchesRoutes from "./routes/matches";
 import { database } from "./config/database";
 import { RegisterStatus } from "./model/common";
 import { LocalStorage } from "node-localstorage";
@@ -21,15 +22,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-// app.use((_req: Request, res: Response, next: NextFunction) => {
-//   const registerStatus = localStorage.getItem(REGISTER_STATE_KEY);
-//   res.setHeader("register-state", registerStatus ?? RegisterState.START);
-//   next();
-// });
 app.use("/users", usersRoutes);
 app.use("/groups", groupRoutes);
 app.use("/doubles", doubleRoutes);
 app.use("/singles", singleRoutes);
+app.use("/schedule", matchesRoutes);
 app.get("/registerStatus", (_req: Request, res: Response) => {
   const registerStatus =
     localStorage.getItem(REGISTER_STATE_KEY) ?? RegisterStatus.NO_GROUPS;

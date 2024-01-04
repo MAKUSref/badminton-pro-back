@@ -1,15 +1,14 @@
-import mongoose, { Schema } from "mongoose";
-import { User } from "../User";
-import { Group } from "../Group";
+import mongoose, { Schema, Types } from "mongoose";
 
 export interface Single {
-  playerId: User;
-  groupId: Group;
+  _id: Types.ObjectId;
+  playerId: Types.ObjectId;
+  groupId: Types.ObjectId;
 }
 
 export interface SingleModel extends Single, Document {}
 
-const singleSchema = new mongoose.Schema<Single>({
+const singleSchema = new mongoose.Schema({
   groupId: { type: Schema.Types.ObjectId, required: true, ref: "Group" },
   playerId: { type: Schema.Types.ObjectId, required: true, ref: "User" },
 });

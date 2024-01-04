@@ -7,7 +7,7 @@ export const getSingle = (
 ) => {
   return SingleSchema.findById(req.params.id)
     .then((single) => {
-      res.status(201).json(single?.toObject());
+      res.status(201).json(single?.toJSON());
     })
     .catch((error) => {
       res.status(500).json(error);
