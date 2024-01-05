@@ -1,6 +1,7 @@
+import { Double } from "../model/record/Double";
 import { Single } from "../model/record/Single";
 
-export function groupSingles(singles: Single[]) {
+export function groupSingles(singles: Single[] | Double[]) {
   const groups = [
     ...new Set(singles.map((single) => single.groupId.toHexString())),
   ];

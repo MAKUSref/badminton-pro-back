@@ -1,4 +1,4 @@
-import { transpose } from "./transpose";
+import { transposeSingles } from "./transpose";
 import { matches } from "./data/matches";
 import { MatchSingle } from "../model/game/MatchSingle";
 
@@ -33,7 +33,7 @@ const output1 = [
 ];
 
 test("tow demensional", () => {
-  expect(transpose(input1)).toStrictEqual(output1);
+  expect(transposeSingles(input1)).toStrictEqual(output1);
 });
 
 const input2 = [
@@ -60,7 +60,7 @@ const output2 = [
 ];
 
 test("adds 1 + 2 to equal 3", () => {
-  expect(transpose(input2)).toStrictEqual(output2);
+  expect(transposeSingles(input2)).toStrictEqual(output2);
 });
 
 const input3 = [
@@ -80,5 +80,5 @@ const output3 = [
 ];
 
 test("adds 1 + 2 to equal 3", () => {
-  expect(transpose(input3 as MatchSingle[][])).toStrictEqual(output3);
+  expect(transposeSingles(input3 as MatchSingle[][])).toStrictEqual(output3);
 });

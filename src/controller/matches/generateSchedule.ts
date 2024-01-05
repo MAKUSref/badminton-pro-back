@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { generateSchedule } from "../../utils/generateSchedule";
+import { generateSingleSchedule } from "../../utils/generateSchedule/generateSingleSchedule";
 import SingleSchema, { Single } from "../../model/record/Single";
 
 interface ScheduleForm {
@@ -20,7 +20,7 @@ export const createSchedule = async (
 
     // console.log(singles);
 
-    const schedule = await generateSchedule(
+    const schedule = await generateSingleSchedule(
       singles as unknown as Single[],
       startTime,
       endTime,

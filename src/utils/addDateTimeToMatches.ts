@@ -1,6 +1,7 @@
 import dayjs from "dayjs";
 import { MatchSingle } from "../model/game/MatchSingle";
 import { Types } from "mongoose";
+import { MatchDouble } from "../model/game/MatchDouble";
 
 const TIME_FORMAT = "HH:mm";
 export const DATE_FORMAT = "DD-MM-YYYY";
@@ -8,7 +9,7 @@ export const DATE_FORMAT = "DD-MM-YYYY";
 export function addDateTimeToMatches(
   startDate: string,
   startTime: string,
-  schedule: MatchSingle[][][]
+  schedule: MatchSingle[][][] | MatchDouble[][][]
 ) {
   let date = dayjs(`${startDate}`, DATE_FORMAT);
 

@@ -1,7 +1,7 @@
 import { Types } from "mongoose";
 import { Single } from "../model/record/Single";
 import { singlesA, singlesB } from "./data/matches";
-import robinSingles from "./robin";
+import { robinSingles } from "./robin";
 
 test("Check number of matches", () => {
   const singles: Single[] = Array.from(Array(20).keys()).map(() => ({
