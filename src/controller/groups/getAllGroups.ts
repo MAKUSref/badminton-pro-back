@@ -6,7 +6,7 @@ export const getAllGroups = async (req: Request, res: Response) => {
 
   try {
     if (req.query.type) {
-      groups = await GroupSchema.find({ type: req.query.type });
+      groups = await GroupSchema.find();
       res.status(201).json(groups);
       return;
     }
