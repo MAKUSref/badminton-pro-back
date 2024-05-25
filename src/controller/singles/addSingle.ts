@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
-import SingleSchema, { Single } from "../../../model/record/Single";
-import UserSchema from "../../../model/User";
+import SingleSchema, { Single } from "../../model/Single";
+import UserSchema from "../../model/Player";
 import { Request, Response } from "express";
 
 export const addSingle = async (

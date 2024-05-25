@@ -1,11 +1,11 @@
-import UserSchema, { User } from "../../model/User";
+import PlayerSchema, { Player } from "../../model/Player";
 import { Request, Response } from "express";
 
-export const updateUser = (
-  req: Request<{ id: string }, {}, User>,
+export const updatePlayer = (
+  req: Request<{ id: string }, {}, Player>,
   res: Response
 ) => {
-  return UserSchema.findByIdAndUpdate(req.params.id, req.body)
+  return PlayerSchema.findByIdAndUpdate(req.params.id, req.body)
     .then((user) => {
       res.status(201).json(user);
     })

@@ -1,6 +1,6 @@
 import { transposeSingles } from "./transpose";
 import { matches } from "./data/matches";
-import { MatchSingle } from "../model/game/MatchSingle";
+import { Match } from "../model/Match";
 
 const input1 = [
   [matches[0], matches[1], matches[2], matches[3], matches[4], matches[5]],
@@ -80,5 +80,5 @@ const output3 = [
 ];
 
 test("adds 1 + 2 to equal 3", () => {
-  expect(transposeSingles(input3 as MatchSingle[][])).toStrictEqual(output3);
+  expect(transposeSingles(input3 as Match[][])).toStrictEqual(output3);
 });

@@ -1,36 +1,50 @@
-import { Double } from "../../model/record/Double";
-import { Single } from "../../model/record/Single";
-import { generateDoubleSchedule } from "./generateDoubleSchedule";
-import { generateSingleSchedule } from "./generateSingleSchedule";
+import customParseFormat from "dayjs/plugin/customParseFormat";
+import dayjs from "dayjs";
+import { robinSingles } from "../robin";
+import { Match } from "../../model/Match";
+import { Single } from "../../model/Single";
+import { transposeSingles } from "../transpose";
+import { groupSingles } from "../groupSingles";
+import { groupMatchesByCourt } from "../groupMatchesByCourt";
+import { addDateTimeToMatches } from "../addDateTimeToMatches";
+import { groupMatchesByRound } from "../groupMatchesByRounds";
+
+dayjs.extend(customParseFormat);
 
 export function generateSchedule(
-  doubles: Double[],
   singles: Single[],
-  mixes: Double[],
   startTime: string,
   endTime: string,
   startDate: string,
   courts: number
 ) {
-  const singlesSchedule = generateSingleSchedule(
-    singles,
+  const groupedSingles = groupSingles(singles) as Single[][];
+
+  let allSingleMatches: Match[] = [];
+
+  for (let i = 0; i < groupedSingles.length; i++) {
+    const matchedSingles = robinSingles(groupedSingles[i]);
+    allSingleMatches = allSingleMatches.concat(matchedSingles);
+  }
+
+  const allMatchesByCourt = groupMatchesByCourt(allSingleMatches, courts);
+
+  const allMatchesByCourtByRound = groupMatchesByRound(
     startTime,
     endTime,
-    startDate,
-    courts
+    allMatchesByCourt
   );
-  const mixesSchedule = generateDoubleSchedule(
-    mixes,
+
+  const schedule = addDateTimeToMatches(
+    startDate,
     startTime,
-    endTime,
-    startDate,
-    courts
-  );
-  const doublesSchedule = generateDoubleSchedule(
-    doubles,
-    startTime,
-    endTime,
-    startDate,
-    courts
-  );
+    allMatchesByCourtByRound
+  ) as Match[][][];
+
+  //REVERSE COLUMN WITH ROW
+  for (let i = 0; i < schedule.length; i++) {
+    schedule[i] = transposeSingles(schedule[i]);
+  }
+
+  return schedule;
 }

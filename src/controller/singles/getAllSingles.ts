@@ -1,4 +1,4 @@
-import SingleSchema, { Single } from "../../../model/record/Single";
+import SingleSchema, { Single } from "../../model/Single";
 import { Request, Response } from "express";
 
 export const getAllSingles = async (req: Request, res: Response) => {

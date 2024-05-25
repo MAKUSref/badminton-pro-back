@@ -1,8 +1,8 @@
-import UserSchema from "../../model/User";
+import PlayerSchema from "../../model/Player";
 import { Request, Response } from "express";
 
-export const getUser = (req: Request<{ id: string }>, res: Response) => {
-  return UserSchema.findById(req.params.id)
+export const getPlayer = (req: Request<{ id: string }>, res: Response) => {
+  return PlayerSchema.findById(req.params.id)
     .then((group) => {
       res.status(201).json(group);
     })

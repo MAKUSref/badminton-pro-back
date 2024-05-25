@@ -1,5 +1,5 @@
-import SingleSchema from "../../../model/record/Single";
-import UserSchema from "../../../model/User";
+import SingleSchema from "../../model/Single";
+import UserSchema from "../../model/Player";
 import { Request, Response } from "express";
 
 export const removeSingle = async (

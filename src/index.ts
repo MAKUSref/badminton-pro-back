@@ -3,10 +3,10 @@
 import dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
 import cors from "cors";
-import usersRoutes from "./routes/User";
+import playersRoutes from "./routes/Player";
 import groupRoutes from "./routes/Group";
-import doubleRoutes from "./routes/record/Double";
-import singleRoutes from "./routes/record/Single";
+import singleRoutes from "./routes/Single";
+import tournamentRoutes from "./routes/Tournament";
 import matchesRoutes from "./routes/matches";
 import { database } from "./config/database";
 import { RegisterStatus } from "./model/common";
@@ -22,11 +22,11 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use("/users", usersRoutes);
+app.use("/players", playersRoutes);
 app.use("/groups", groupRoutes);
-app.use("/doubles", doubleRoutes);
 app.use("/singles", singleRoutes);
 app.use("/schedule", matchesRoutes);
+app.use("/tournament", tournamentRoutes);
 app.get("/registerStatus", (_req: Request, res: Response) => {
   const registerStatus =
     localStorage.getItem(REGISTER_STATE_KEY) ?? RegisterStatus.NO_GROUPS;

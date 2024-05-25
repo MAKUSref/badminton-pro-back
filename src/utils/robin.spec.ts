@@ -1,5 +1,5 @@
 import { Types } from "mongoose";
-import { Single } from "../model/record/Single";
+import { Single } from "../model/Single";
 import { singlesA, singlesB } from "./data/matches";
 import { robinSingles } from "./robin";
 
