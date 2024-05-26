@@ -20,7 +20,7 @@ database.config();
 
 const app = express();
 
-localStorage.setItem(REGISTER_STATE_KEY, RegisterStatus.NO_GROUPS);
+localStorage.setItem(REGISTER_STATE_KEY, RegisterStatus.ADMIN_REGISTER);
 
 app.use(cors());
 app.use(express.json());

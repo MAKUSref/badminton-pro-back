@@ -27,10 +27,10 @@ export module database {
 
       initTournament();
       console.log("Tournament initialized");
-      // initPlayers();
-      // console.log("Users initialized");
-      // initGroups();
-      // console.log("Groups initialized");
+      await initPlayers();
+      console.log("Users initialized");
+      await initGroups();
+      console.log("Groups initialized");
     });
   };
 }

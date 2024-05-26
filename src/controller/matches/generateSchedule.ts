@@ -18,7 +18,7 @@ export const createSchedule = async (
   try {
     const singles = await SingleSchema.find();
 
-    // console.log(singles);
+    console.log(req.body);
 
     const schedule = await generateSchedule(
       singles as unknown as Single[],
@@ -28,7 +28,9 @@ export const createSchedule = async (
       courtCount
     );
 
-    res.status(201).json(schedule);
+    res
+      .status(201)
+      .json({ schedule, courts: courtCount, rounds: schedule.length });
   } catch (error) {
     res.status(500).json(error);
   }

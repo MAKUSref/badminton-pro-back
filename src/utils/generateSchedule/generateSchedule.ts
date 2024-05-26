@@ -18,7 +18,7 @@ export function generateSchedule(
   startDate: string,
   courts: number
 ) {
-  const groupedSingles = groupSingles(singles) as Single[][];
+  const groupedSingles = groupSingles(singles);
 
   let allSingleMatches: Match[] = [];
 
