@@ -1,6 +1,6 @@
 import dotenv from "dotenv";
 import mongoose from "mongoose";
-import { initUsers } from "../data/players";
+import { initPlayers } from "../data/players";
 import { initGroups } from "../data/groups";
 import { initTournament } from "../data/tournament";
 
@@ -27,8 +27,8 @@ export module database {
 
       initTournament();
       console.log("Tournament initialized");
-      initUsers();
-      console.log("Users initialized");
+      // initPlayers();
+      // console.log("Users initialized");
       // initGroups();
       // console.log("Groups initialized");
     });

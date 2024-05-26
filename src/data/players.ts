@@ -1,6 +1,6 @@
 import UserSchema, { Player } from "../model/Player";
 
-export const initUsers = () => {
+export const initPlayers = () => {
   UserSchema.insertMany<Player>([
     {
       firstName: "Jan",
