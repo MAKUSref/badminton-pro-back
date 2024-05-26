@@ -20,6 +20,8 @@ database.config();
 
 const app = express();
 
+localStorage.setItem(REGISTER_STATE_KEY, RegisterStatus.NO_GROUPS);
+
 app.use(cors());
 app.use(express.json());
 app.use("/players", playersRoutes);
