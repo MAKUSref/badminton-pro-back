@@ -11,4 +11,7 @@ export interface ParticipationModel extends Participation, Document {}
 
 export const participationSchema = new Schema<Participation>({
   singleId: { type: Schema.Types.ObjectId, required: true, ref: "Single" },
+  set1: { type: Number, required: false },
+  set2: { type: Number, required: false },
+  set3: { type: Number, required: false },
 });

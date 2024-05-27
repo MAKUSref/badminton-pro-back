@@ -7,12 +7,14 @@ export const removeSingle = async (
   res: Response
 ) => {
   try {
-    await UserSchema.findOneAndUpdate(
-      { singleId: req.params.id },
-      {
-        singleId: null,
-      }
-    );
+    console.log(req.params.id);
+
+    const playerToEdit = await UserSchema.findOne({ singleId: req.params.id });
+    await UserSchema.findByIdAndUpdate(playerToEdit?.id, {
+      singleId: null,
+    });
+
+    // console.log({ updatedPlayer: player });
 
     const singleRes = await SingleSchema.findByIdAndDelete(req.params.id);
     res.status(201).json(singleRes);

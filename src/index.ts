@@ -7,7 +7,8 @@ import playersRoutes from "./routes/Player";
 import groupRoutes from "./routes/Group";
 import singleRoutes from "./routes/Single";
 import tournamentRoutes from "./routes/Tournament";
-import matchesRoutes from "./routes/matches";
+import scheduleRoutes from "./routes/schedule";
+import matchesRoutes from "./routes/Match";
 import { database } from "./config/database";
 import { RegisterStatus } from "./model/common";
 import { LocalStorage } from "node-localstorage";
@@ -27,7 +28,8 @@ app.use(express.json());
 app.use("/players", playersRoutes);
 app.use("/groups", groupRoutes);
 app.use("/singles", singleRoutes);
-app.use("/schedule", matchesRoutes);
+app.use("/schedule", scheduleRoutes);
+app.use("/matches", matchesRoutes);
 app.use("/tournament", tournamentRoutes);
 app.get("/registerStatus", (_req: Request, res: Response) => {
   const registerStatus =

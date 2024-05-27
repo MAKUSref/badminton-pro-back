@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { generateSchedule } from "../../utils/generateSchedule/generateSchedule";
 import SingleSchema, { Single } from "../../model/Single";
+import { GeneratedSchedule } from "../../model/Schedule";
 
 interface ScheduleForm {
   startDate: string;
@@ -18,8 +19,6 @@ export const createSchedule = async (
   try {
     const singles = await SingleSchema.find();
 
-    console.log(req.body);
-
     const schedule = await generateSchedule(
       singles as unknown as Single[],
       startTime,
@@ -28,9 +27,16 @@ export const createSchedule = async (
       courtCount
     );
 
-    res
-      .status(201)
-      .json({ schedule, courts: courtCount, rounds: schedule.length });
+    const generatedSchedule: GeneratedSchedule = {
+      schedule,
+      startTime,
+      endTime,
+      startDate,
+      courtCount,
+      rounds: schedule.length,
+    };
+
+    res.status(201).json(generatedSchedule);
   } catch (error) {
     res.status(500).json(error);
   }

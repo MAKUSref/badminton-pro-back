@@ -39,7 +39,7 @@ export function generateSchedule(
     startDate,
     startTime,
     allMatchesByCourtByRound
-  ) as Match[][][];
+  );
 
   //REVERSE COLUMN WITH ROW
   for (let i = 0; i < schedule.length; i++) {

@@ -20,7 +20,6 @@ export function addDateTimeToMatches(
         schedule[i][j][k].startDataTime = `${date.format(
           DATE_FORMAT
         )} ${time.format(TIME_FORMAT)}`;
-        schedule[i][j][k]._id = new Types.ObjectId();
       }
 
       time = time.add(30, "minutes");

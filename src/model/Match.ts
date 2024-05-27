@@ -2,7 +2,6 @@ import { Participation, participationSchema } from "./Participation";
 import mongoose, { Types } from "mongoose";
 
 export interface Match {
-  _id: Types.ObjectId;
   startDataTime?: string;
   court?: number;
   participation1: Participation;
@@ -11,7 +10,7 @@ export interface Match {
 
 export interface MatchModel extends Match, Document {}
 
-const matchSchema = new mongoose.Schema<Match>({
+export const matchSchema = new mongoose.Schema<Match>({
   participation1: {
     type: participationSchema,
     required: true,
@@ -20,6 +19,10 @@ const matchSchema = new mongoose.Schema<Match>({
     type: participationSchema,
     required: true,
   },
+  startDataTime: {
+    type: String,
+    required: true,
+  },
 });
 
-export default mongoose.model<MatchModel>("MatchSingle", matchSchema);
+export default mongoose.model<MatchModel>("Match", matchSchema);

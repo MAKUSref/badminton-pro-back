@@ -42,7 +42,6 @@ export function robinSingles(singles: Single[]) {
         };
 
         const match: Match = {
-          _id: new Types.ObjectId(),
           participation1: isHome ? participation1 : participation2,
           participation2: isHome ? participation2 : participation1,
         };
