@@ -25,7 +25,7 @@ export function addDateTimeToMatches(
       time = time.add(30, "minutes");
     }
 
-    date = date.add(1, "week");
+    date = date.add(1, "day");
   }
 
   return schedule;
