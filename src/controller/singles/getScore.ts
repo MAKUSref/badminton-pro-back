@@ -14,7 +14,9 @@ export const getScore = async (req: Request<{ id: string }>, res: Response) => {
     });
 
     const allMatches = matches.length;
-    const playedMatches = matches.filter((match) => match.participation1.set1);
+    const playedMatches = matches.filter(
+      (match) => match.participation1.set1 != null
+    );
     let score = 0;
 
     for (let i = 0; i < playedMatches.length; i++) {
@@ -44,8 +46,8 @@ export const getScorePoints = ({
   else if ((set1 === 21 && set3 === 21) || (set2 === 21 && set3 === 21))
     return 2;
   else if (
-    (set3 && set1 === 21 && set3 < 21) ||
-    (set3 && set2 === 21 && set3 < 21)
+    (set3 != null && set1 === 21 && set3 < 21) ||
+    (set3 != null && set2 === 21 && set3 < 21)
   )
     return 1;
   else return 0;
