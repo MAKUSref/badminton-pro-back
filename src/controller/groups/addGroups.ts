@@ -8,7 +8,6 @@ export const addGroups = async (
   req: Request<{}, {}, Group[]>,
   res: Response
 ) => {
-  localStorage.setItem(REGISTER_STATE_KEY, RegisterStatus.USERS_REGISTER);
   return GroupSchema.insertMany<Group>(req.body)
     .then((groups) => {
       res.status(201).json(groups);

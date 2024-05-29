@@ -21,7 +21,7 @@ database.config();
 
 const app = express();
 
-localStorage.setItem(REGISTER_STATE_KEY, RegisterStatus.ADMIN_REGISTER);
+localStorage.setItem(REGISTER_STATE_KEY, RegisterStatus.ADDING_PLAYERS_GROUPS);
 
 app.use(cors());
 app.use(express.json());
@@ -33,7 +33,8 @@ app.use("/matches", matchesRoutes);
 app.use("/tournament", tournamentRoutes);
 app.get("/registerStatus", (_req: Request, res: Response) => {
   const registerStatus =
-    localStorage.getItem(REGISTER_STATE_KEY) ?? RegisterStatus.NO_GROUPS;
+    localStorage.getItem(REGISTER_STATE_KEY) ??
+    RegisterStatus.ADDING_PLAYERS_GROUPS;
   res.send({ registerStatus });
 });
 
