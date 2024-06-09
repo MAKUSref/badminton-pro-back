@@ -19,10 +19,20 @@ export const getScore = async (req: Request<{ id: string }>, res: Response) => {
     );
     let score = 0;
 
+  
+
     for (let i = 0; i < playedMatches.length; i++) {
-      score += getScorePoints({
-        participation: playedMatches[i].participation1,
-      });
+      if(playedMatches[i].participation1.singleId.toString() === req.params.id) {
+        score += getScorePoints({
+          participation: playedMatches[i].participation1,
+        });
+      } else {
+
+        score += getScorePoints({
+          participation: playedMatches[i].participation2,
+        });
+      }
+
     }
 
     res.status(201).json({
